@@ -1,0 +1,12 @@
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MetroFramework.Design.dll
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MetroFramework.dll
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MetroFramework.Fonts.dll
