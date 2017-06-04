@@ -35,10 +35,10 @@
             this.LazyButtonLabel = new MetroFramework.Controls.MetroLabel();
             this.LazyButtonButtonCancel = new MetroFramework.Controls.MetroButton();
             this.LazyButtonButtonОК = new MetroFramework.Controls.MetroButton();
-            this.NumEnter = new MetroFramework.Controls.MetroTabPage();
+            this.NumMultiply = new MetroFramework.Controls.MetroTabPage();
             this.NumEnterLabel = new MetroFramework.Controls.MetroLabel();
-            this.NumEnterButtonCancel = new MetroFramework.Controls.MetroButton();
-            this.NumEnterButtonOK = new MetroFramework.Controls.MetroButton();
+            this.NumMultiplyButtonCancel = new MetroFramework.Controls.MetroButton();
+            this.NumMultiplyButtonOK = new MetroFramework.Controls.MetroButton();
             this.NumPlus = new MetroFramework.Controls.MetroTabPage();
             this.NumPlusLabel = new MetroFramework.Controls.MetroLabel();
             this.NumPlusButtonCancel = new MetroFramework.Controls.MetroButton();
@@ -82,7 +82,7 @@
             this.GroupButtonsIn.SuspendLayout();
             this.ListGroupButtonsIn.SuspendLayout();
             this.LazyButton.SuspendLayout();
-            this.NumEnter.SuspendLayout();
+            this.NumMultiply.SuspendLayout();
             this.NumPlus.SuspendLayout();
             this.NumMinus.SuspendLayout();
             this.UserButton.SuspendLayout();
@@ -112,14 +112,14 @@
             // ListGroupButtonsIn
             // 
             this.ListGroupButtonsIn.Controls.Add(this.LazyButton);
-            this.ListGroupButtonsIn.Controls.Add(this.NumEnter);
+            this.ListGroupButtonsIn.Controls.Add(this.NumMultiply);
             this.ListGroupButtonsIn.Controls.Add(this.NumPlus);
             this.ListGroupButtonsIn.Controls.Add(this.NumMinus);
             this.ListGroupButtonsIn.Controls.Add(this.UserButton);
             this.ListGroupButtonsIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsIn.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsIn.Name = "ListGroupButtonsIn";
-            this.ListGroupButtonsIn.SelectedIndex = 4;
+            this.ListGroupButtonsIn.SelectedIndex = 1;
             this.ListGroupButtonsIn.Size = new System.Drawing.Size(874, 179);
             this.ListGroupButtonsIn.TabIndex = 0;
             this.ListGroupButtonsIn.TabStop = false;
@@ -182,23 +182,23 @@
             this.LazyButtonButtonОК.UseStyleColors = true;
             this.LazyButtonButtonОК.Click += new System.EventHandler(this.LazyButtonButtonОК_Click);
             // 
-            // NumEnter
+            // NumMultiply
             // 
-            this.NumEnter.Controls.Add(this.NumEnterLabel);
-            this.NumEnter.Controls.Add(this.NumEnterButtonCancel);
-            this.NumEnter.Controls.Add(this.NumEnterButtonOK);
-            this.NumEnter.HorizontalScrollbarBarColor = true;
-            this.NumEnter.HorizontalScrollbarHighlightOnWheel = false;
-            this.NumEnter.HorizontalScrollbarSize = 10;
-            this.NumEnter.Location = new System.Drawing.Point(4, 38);
-            this.NumEnter.Name = "NumEnter";
-            this.NumEnter.Size = new System.Drawing.Size(866, 137);
-            this.NumEnter.TabIndex = 1;
-            this.NumEnter.Text = "Num Enter";
-            this.NumEnter.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.NumEnter.VerticalScrollbarBarColor = true;
-            this.NumEnter.VerticalScrollbarHighlightOnWheel = false;
-            this.NumEnter.VerticalScrollbarSize = 10;
+            this.NumMultiply.Controls.Add(this.NumEnterLabel);
+            this.NumMultiply.Controls.Add(this.NumMultiplyButtonCancel);
+            this.NumMultiply.Controls.Add(this.NumMultiplyButtonOK);
+            this.NumMultiply.HorizontalScrollbarBarColor = true;
+            this.NumMultiply.HorizontalScrollbarHighlightOnWheel = false;
+            this.NumMultiply.HorizontalScrollbarSize = 10;
+            this.NumMultiply.Location = new System.Drawing.Point(4, 38);
+            this.NumMultiply.Name = "NumMultiply";
+            this.NumMultiply.Size = new System.Drawing.Size(866, 137);
+            this.NumMultiply.TabIndex = 1;
+            this.NumMultiply.Text = "Num Multiply";
+            this.NumMultiply.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.NumMultiply.VerticalScrollbarBarColor = true;
+            this.NumMultiply.VerticalScrollbarHighlightOnWheel = false;
+            this.NumMultiply.VerticalScrollbarSize = 10;
             // 
             // NumEnterLabel
             // 
@@ -206,37 +206,37 @@
             this.NumEnterLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.NumEnterLabel.Location = new System.Drawing.Point(350, 45);
             this.NumEnterLabel.Name = "NumEnterLabel";
-            this.NumEnterLabel.Size = new System.Drawing.Size(186, 19);
+            this.NumEnterLabel.Size = new System.Drawing.Size(170, 19);
             this.NumEnterLabel.TabIndex = 6;
-            this.NumEnterLabel.Text = "Нажатие \"Enter\" на NumLock.";
+            this.NumEnterLabel.Text = "Нажатие \" * \" на NumLock.";
             this.NumEnterLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.NumEnterLabel.UseStyleColors = true;
             // 
-            // NumEnterButtonCancel
+            // NumMultiplyButtonCancel
             // 
-            this.NumEnterButtonCancel.Enabled = false;
-            this.NumEnterButtonCancel.Location = new System.Drawing.Point(699, 105);
-            this.NumEnterButtonCancel.Name = "NumEnterButtonCancel";
-            this.NumEnterButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.NumEnterButtonCancel.TabIndex = 5;
-            this.NumEnterButtonCancel.TabStop = false;
-            this.NumEnterButtonCancel.Text = "Отменить";
-            this.NumEnterButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.NumEnterButtonCancel.UseSelectable = true;
-            this.NumEnterButtonCancel.Click += new System.EventHandler(this.NumEnterButtonCancel_Click);
+            this.NumMultiplyButtonCancel.Enabled = false;
+            this.NumMultiplyButtonCancel.Location = new System.Drawing.Point(699, 105);
+            this.NumMultiplyButtonCancel.Name = "NumMultiplyButtonCancel";
+            this.NumMultiplyButtonCancel.Size = new System.Drawing.Size(127, 29);
+            this.NumMultiplyButtonCancel.TabIndex = 5;
+            this.NumMultiplyButtonCancel.TabStop = false;
+            this.NumMultiplyButtonCancel.Text = "Отменить";
+            this.NumMultiplyButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.NumMultiplyButtonCancel.UseSelectable = true;
+            this.NumMultiplyButtonCancel.Click += new System.EventHandler(this.NumMultiplyButtonCancel_Click);
             // 
-            // NumEnterButtonOK
+            // NumMultiplyButtonOK
             // 
-            this.NumEnterButtonOK.Location = new System.Drawing.Point(551, 105);
-            this.NumEnterButtonOK.Name = "NumEnterButtonOK";
-            this.NumEnterButtonOK.Size = new System.Drawing.Size(127, 29);
-            this.NumEnterButtonOK.TabIndex = 4;
-            this.NumEnterButtonOK.TabStop = false;
-            this.NumEnterButtonOK.Text = "Подтвердить";
-            this.NumEnterButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.NumEnterButtonOK.UseSelectable = true;
-            this.NumEnterButtonOK.UseStyleColors = true;
-            this.NumEnterButtonOK.Click += new System.EventHandler(this.NumEnterButtonOK_Click);
+            this.NumMultiplyButtonOK.Location = new System.Drawing.Point(551, 105);
+            this.NumMultiplyButtonOK.Name = "NumMultiplyButtonOK";
+            this.NumMultiplyButtonOK.Size = new System.Drawing.Size(127, 29);
+            this.NumMultiplyButtonOK.TabIndex = 4;
+            this.NumMultiplyButtonOK.TabStop = false;
+            this.NumMultiplyButtonOK.Text = "Подтвердить";
+            this.NumMultiplyButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.NumMultiplyButtonOK.UseSelectable = true;
+            this.NumMultiplyButtonOK.UseStyleColors = true;
+            this.NumMultiplyButtonOK.Click += new System.EventHandler(this.NumMultiplyButtonOK_Click);
             // 
             // NumPlus
             // 
@@ -479,7 +479,7 @@
             this.ListGroupButtonsOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsOut.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsOut.Name = "ListGroupButtonsOut";
-            this.ListGroupButtonsOut.SelectedIndex = 1;
+            this.ListGroupButtonsOut.SelectedIndex = 4;
             this.ListGroupButtonsOut.Size = new System.Drawing.Size(874, 303);
             this.ListGroupButtonsOut.Style = MetroFramework.MetroColorStyle.Green;
             this.ListGroupButtonsOut.TabIndex = 0;
@@ -564,6 +564,7 @@
             this.DefaultButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.DefaultButtonSave.UseSelectable = true;
             this.DefaultButtonSave.UseStyleColors = true;
+            this.DefaultButtonSave.Click += new System.EventHandler(this.DefaultButtonSave_Click);
             // 
             // KeyboardFunction
             // 
@@ -643,6 +644,7 @@
             this.KeyboardFunctionButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.KeyboardFunctionButtonSave.UseSelectable = true;
             this.KeyboardFunctionButtonSave.UseStyleColors = true;
+            this.KeyboardFunctionButtonSave.Click += new System.EventHandler(this.KeyboardFunctionButtonSave_Click);
             // 
             // MouseFunction
             // 
@@ -667,6 +669,7 @@
             this.MouseFunctionComboBox.FormattingEnabled = true;
             this.MouseFunctionComboBox.ItemHeight = 23;
             this.MouseFunctionComboBox.Items.AddRange(new object[] {
+            "---",
             "Щелчок",
             "Двойной щелчок",
             "Меню"});
@@ -705,6 +708,7 @@
             this.MouseFunctionButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.MouseFunctionButtonSave.UseSelectable = true;
             this.MouseFunctionButtonSave.UseStyleColors = true;
+            this.MouseFunctionButtonSave.Click += new System.EventHandler(this.MouseFunctionButtonSave_Click);
             // 
             // WINDOWSKeyCombination
             // 
@@ -730,6 +734,7 @@
             this.WINDOWSKeyCombinationComboBox.FormattingEnabled = true;
             this.WINDOWSKeyCombinationComboBox.ItemHeight = 23;
             this.WINDOWSKeyCombinationComboBox.Items.AddRange(new object[] {
+            "---",
             "Запустить диспетчера задач",
             "Свернуть все окна",
             "Alt + TAB",
@@ -771,6 +776,7 @@
             this.WINDOWSKeyCombinationButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.WINDOWSKeyCombinationButtonSave.UseSelectable = true;
             this.WINDOWSKeyCombinationButtonSave.UseStyleColors = true;
+            this.WINDOWSKeyCombinationButtonSave.Click += new System.EventHandler(this.WINDOWSKeyCombinationButtonSave_Click);
             // 
             // LaunchingTheProgram
             // 
@@ -913,6 +919,7 @@
             this.LaunchingTheProgramButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramButtonSave.UseSelectable = true;
             this.LaunchingTheProgramButtonSave.UseStyleColors = true;
+            this.LaunchingTheProgramButtonSave.Click += new System.EventHandler(this.LaunchingTheProgramButtonSave_Click);
             // 
             // TestButton
             // 
@@ -920,7 +927,7 @@
             this.TestButton.Name = "TestButton";
             this.TestButton.Size = new System.Drawing.Size(184, 23);
             this.TestButton.TabIndex = 5;
-            this.TestButton.Text = "TestButton";
+            this.TestButton.Text = "TestButtonLazyButton";
             this.TestButton.UseSelectable = true;
             this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
@@ -946,12 +953,14 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeybordToMouse_KeyPress);
             this.GroupButtonsIn.ResumeLayout(false);
             this.ListGroupButtonsIn.ResumeLayout(false);
             this.LazyButton.ResumeLayout(false);
             this.LazyButton.PerformLayout();
-            this.NumEnter.ResumeLayout(false);
-            this.NumEnter.PerformLayout();
+            this.NumMultiply.ResumeLayout(false);
+            this.NumMultiply.PerformLayout();
             this.NumPlus.ResumeLayout(false);
             this.NumPlus.PerformLayout();
             this.NumMinus.ResumeLayout(false);
@@ -978,7 +987,7 @@
         private System.Windows.Forms.GroupBox GroupButtonsIn;
         private MetroFramework.Controls.MetroTabControl ListGroupButtonsIn;
         private MetroFramework.Controls.MetroTabPage LazyButton;
-        private MetroFramework.Controls.MetroTabPage NumEnter;
+        private MetroFramework.Controls.MetroTabPage NumMultiply;
         private MetroFramework.Controls.MetroTabPage NumPlus;
         private MetroFramework.Controls.MetroTabPage NumMinus;
         private MetroFramework.Controls.MetroTabPage UserButton;
@@ -992,8 +1001,8 @@
         private MetroFramework.Controls.MetroTabPage LaunchingTheProgram;
         private MetroFramework.Controls.MetroButton LazyButtonButtonCancel;
         private MetroFramework.Controls.MetroButton LazyButtonButtonОК;
-        private MetroFramework.Controls.MetroButton NumEnterButtonCancel;
-        private MetroFramework.Controls.MetroButton NumEnterButtonOK;
+        private MetroFramework.Controls.MetroButton NumMultiplyButtonCancel;
+        private MetroFramework.Controls.MetroButton NumMultiplyButtonOK;
         private MetroFramework.Controls.MetroButton NumPlusButtonCancel;
         private MetroFramework.Controls.MetroButton NumPlusButtonOK;
         private MetroFramework.Controls.MetroButton NumMinusButtonCancel;

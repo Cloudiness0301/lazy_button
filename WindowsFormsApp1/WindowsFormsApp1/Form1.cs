@@ -22,31 +22,15 @@ namespace LazyButton
 {
     public partial class Form1 : MetroForm //"Form" было изначально, а не "MetroForm"
     {
-        /*
-        // Поле для сохранения позиции окна - Field for saving window position
-        private Rectangle m_rcWindow;
-
-        // Поле для хранения регистров - Field for registy storage
-        private string m_strRegKey = "Software\\RandyRants\\LazyButton";
-
-        // Hashtable для отслеживания текста для сканирования кодов - Hashtable for tracking text to scan codes
-        private Hashtable m_hashKeys = null;
-
-        // флаг (для просмотра дорожки, если сопоставления сохранены) - Dirty flag (to see track if mappings have been saved)
-        private bool m_bDirty = false;
-        */
-
-
-
-        //Для работы с клавой.
+        // Для работы с клавой.
         [DllImport("USER32.DLL")]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [DllImport("USER32.DLL")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
-        //для вызова функции LockWorkStation - блокировка компа = смена пользователя = Win + L
+        // Для вызова функции LockWorkStation - блокировка компа = смена пользователя = Win + L.
         [DllImport("user32.dll")]
         private static extern void LockWorkStation();
-        //щелкаем мышкой
+        // Щелкаем мышкой.
         [DllImport("user32.dll")]
         static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, UIntPtr dwExtraInfo);
         const int MouseEventF_Move = 0x0001;
@@ -55,26 +39,19 @@ namespace LazyButton
         const int MouseEventF_RightDown = 0x0008;
         const int MouseEventF_RightUp = 0x0010;
         const int MouseEventF_Absolute = 0x8000;
-
-
+        
         public Form1()
         {
             InitializeComponent();
-            ShowInTaskbar = false; // скрывает значка формы на панели задач. Если свернул - то можно вызвать только Alt+Tab
+            ShowInTaskbar = false; // скрывает значка формы на панели задач. Если свернул - то можно вызвать только Alt+Tab.
         }
-
-
-
-
-
-
+                
         private void Form1_Load(object sender, EventArgs e)
         {
            // Cursor = Cursors.WaitCursor;
 
-        }
+        }               
 
-        
         //
         //
         // Код для кнопки F.A.Q. 
@@ -84,15 +61,23 @@ namespace LazyButton
                 "1) Выбери один из стандартных вариантов сочетаний клавиш или введи свою.\n2) Назначь стандартную операцию или выбери свою.\n3) Нажми ''Сохранить'' и будь счатлив(а)!\nУдачи! :)\n\nP.S.: Если потеряли приложение - жми Alt+Tab.",
                 "А собственно как это?", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
-
-
+        //
+        //
+        // Вывод запроса при закрытии формы
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MetroFramework.MetroMessageBox.Show(this, "Вы уверены, что хотите выйти из программы?\nЕсли вы закроете программу все назначенные назначения 'слетят'!",
+                                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
 
         //
         //
         //!!!***   ВЕРХЯЯ ГРУППА   ***!!!\\\ 
         //
         //
-
         //
         //
         // GroupButtonsIn_Enter - Группа кнопок назначаемых клавиш.
@@ -103,12 +88,13 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Подтвердить выбор назначаемой кнопки: LazyButton"
+        // Кнопка "Подтвердить выбор назначаемой кнопки: LazyButton".
         private void LazyButtonButtonОК_Click(object sender, EventArgs e)
         {
             LazyButtonButtonCancel.Enabled = true;
+            LazyButtonButtonОК.Enabled = false;
             GroupButtonsOut.Enabled = true;
-            NumEnter.Enabled = false;
+            NumMultiply.Enabled = false;
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
@@ -121,12 +107,13 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Отменить выбор назначаемой кнопки: LazyButton"
+        // Кнопка "Отменить выбор назначаемой кнопки: LazyButton".
         private void LazyButtonButtonCancel_Click(object sender, EventArgs e)
         {
             LazyButtonButtonCancel.Enabled = false;
+            LazyButtonButtonОК.Enabled = true;
             GroupButtonsOut.Enabled = false;
-            NumEnter.Enabled = true;
+            NumMultiply.Enabled = true;
             NumPlus.Enabled = true;
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
@@ -136,24 +123,26 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Подтвердить выбор назначаемой кнопки: NumEnter+NumPlus"
-        private void NumEnterButtonOK_Click(object sender, EventArgs e)
+        // Кнопка "Подтвердить выбор назначаемой кнопки: NumMultiply".
+        private void NumMultiplyButtonOK_Click(object sender, EventArgs e)
         {
-            NumEnterButtonCancel.Enabled = true;
+            NumMultiplyButtonCancel.Enabled = true;
+            NumMultiplyButtonOK.Enabled = false;
             GroupButtonsOut.Enabled = true;
             LazyButton.Enabled = false;
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
-            DefaultTextBox1.Text = "Num Enter";
+            DefaultTextBox1.Text = "Num Multiply";
         }
 
         //
         //
-        // Кнопка "Отменить выбор назначаемой кнопки: NumEnter+NumPlus"
-        private void NumEnterButtonCancel_Click(object sender, EventArgs e)
+        // Кнопка "Отменить выбор назначаемой кнопки: Num Multiply".
+        private void NumMultiplyButtonCancel_Click(object sender, EventArgs e)
         {
-            NumEnterButtonCancel.Enabled = false;
+            NumMultiplyButtonCancel.Enabled = false;
+            NumMultiplyButtonOK.Enabled = true;
             GroupButtonsOut.Enabled = false;
             LazyButton.Enabled = true;
             NumPlus.Enabled = true;
@@ -164,13 +153,14 @@ namespace LazyButton
 
         // 
         //
-        //Кнопка "Подтвердить выбор назначаемой кнопки: NumEnter+NumDel"
+        //Кнопка "Подтвердить выбор назначаемой кнопки: NumPlus".
         private void NumPlusButtonOK_Click(object sender, EventArgs e)
         {
             NumPlusButtonCancel.Enabled = true;
+            NumPlusButtonOK.Enabled = false;
             GroupButtonsOut.Enabled = true;
             LazyButton.Enabled = false;
-            NumEnter.Enabled = false;
+            NumMultiply.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
             DefaultTextBox1.Text = "Num +";
@@ -178,13 +168,14 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Отменить выбор назначаемой кнопки: NumEnter+NumDel"
+        // Кнопка "Отменить выбор назначаемой кнопки: NumPlus".
         private void NumPlusButtonCancel_Click(object sender, EventArgs e)
         {
             NumPlusButtonCancel.Enabled = false;
+            NumPlusButtonOK.Enabled = true;
             GroupButtonsOut.Enabled = false;
             LazyButton.Enabled = true;
-            NumEnter.Enabled = true;
+            NumMultiply.Enabled = true;
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
             DefaultTextBox1.Text = "";
@@ -192,13 +183,14 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Подтвердить выбор назначаемой кнопки: NumDel+Num0"
+        // Кнопка "Подтвердить выбор назначаемой кнопки: NumMinus".
         private void NumMinusButtonOK_Click(object sender, EventArgs e)
         {
             NumMinusButtonCancel.Enabled = true;
+            NumMinusButtonOK.Enabled = false;
             GroupButtonsOut.Enabled = true;
             LazyButton.Enabled = false;
-            NumEnter.Enabled = false;
+            NumMultiply.Enabled = false;
             NumPlus.Enabled = false;
             UserButton.Enabled = false;
             DefaultTextBox1.Text = "Num -";
@@ -206,13 +198,14 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Отменить выбор назначаемой кнопки: NumDel+Num0"
+        // Кнопка "Отменить выбор назначаемой кнопки: NumMinus".
         private void NumMinusButtonCancel_Click(object sender, EventArgs e)
         {
             NumMinusButtonCancel.Enabled = false;
+            NumMinusButtonOK.Enabled = true;
             GroupButtonsOut.Enabled = false;
             LazyButton.Enabled = true;
-            NumEnter.Enabled = true;
+            NumMultiply.Enabled = true;
             NumPlus.Enabled = true;
             UserButton.Enabled = true;
             DefaultTextBox1.Text = "";
@@ -220,29 +213,30 @@ namespace LazyButton
 
         //
         //
-        // Кнопка "Подтвердить выбор назначаемой кнопки: Назначить свою"
+        // Кнопка "Подтвердить выбор назначаемой кнопки: Назначить свою".
         private void UserButtonButtonOK_Click(object sender, EventArgs e)
         {
             UserButtonButtonCancel.Enabled = true;
+            UserButtonButtonOK.Enabled = false;
             GroupButtonsOut.Enabled = true;
             UserButtonTextBox.Enabled = false;
             LazyButton.Enabled = false;
-            NumEnter.Enabled = false;
+            NumMultiply.Enabled = false;
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
             DefaultTextBox1.Text = UserButtonTextBox.Text;
         }
-
         //
         //
-        // Кнопка "Отменить выбор назначаемой кнопки: Назначить свою"
+        // Кнопка "Отменить выбор назначаемой кнопки: Назначить свою".
         private void UserButtonButtonCancel_Click(object sender, EventArgs e)
         {
             UserButtonButtonCancel.Enabled = false;
+            UserButtonButtonOK.Enabled = true;
             GroupButtonsOut.Enabled = false;
             UserButtonTextBox.Enabled = true;
             LazyButton.Enabled = true;
-            NumEnter.Enabled = true;
+            NumMultiply.Enabled = true;
             NumPlus.Enabled = true;
             NumMinus.Enabled = true;
             DefaultTextBox1.Text = "";
@@ -251,7 +245,7 @@ namespace LazyButton
 
         //
         //
-        // ТекстБокс "на какую кнопку или сочетание клавиш назначить чет. UserButton"
+        // ТекстБокс "на какую кнопку или сочетание клавиш назначить чет. UserButton".
         private void UserButtonTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             // очищаем поле
@@ -281,13 +275,12 @@ namespace LazyButton
             UserButtonTextBox.Text += key.ToString();
         }
 
+
         //
         //
         //!!!***   НИЖНАЯЯ ГРУППА   ***!!!\\\ 
         //
         //
-
-
         //
         //
         // GroupButtonsOut_Enter - Группа кнопок назначения клавиш.
@@ -295,11 +288,23 @@ namespace LazyButton
         {
             
         }
-        
-       
+
         //
+        // По умолчанию.
+        // Кнопка "сохранить" по умолчанию.      
+        private void DefaultButtonSave_Click(object sender, EventArgs e)
+        {
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
+            GroupButtonsOut.Enabled = false;
+        }
+
         //
-        // ТекстБокс "какую кнопку или сочетание клавиш назначить.  KeyboardFunction"                
+        // Функция клавиатуры.
+        // ТекстБокс "какую кнопку или сочетание клавиш назначить.  KeyboardFunction".              
         private void KeyboardFunctionTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             // очищаем поле
@@ -328,18 +333,106 @@ namespace LazyButton
             // выводим полученное словосочетание
             KeyboardFunctionTextBox.Text += key.ToString();
         }
+        //
+        // Функция клавиатуры.
+        // Кнопка "сохранить" функцию клавиатуры.  
+        private void KeyboardFunctionButtonSave_Click(object sender, EventArgs e)
+        {
+            DefaultTextBox1.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
+            GroupButtonsOut.Enabled = false;                       
+        }
+
+        //
+        // Функция мыши.
+        // Кнопка "сохранить" функцию мыши.
+        private void MouseFunctionButtonSave_Click(object sender, EventArgs e)
+        {
+            DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
+            GroupButtonsOut.Enabled = false;
+        }
+
+        //
+        // Сочетание клавиш Windows.
+        // Кнопка "сохранить" сочетание клавиш Windows.
+        private void WINDOWSKeyCombinationButtonSave_Click(object sender, EventArgs e)
+        {
+            DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
+            GroupButtonsOut.Enabled = false;
+        }
+
+        //
+        // Запуск программы.
+        // Кнопка "сохранить" запуск программы.
+        private void LaunchingTheProgramButtonSave_Click(object sender, EventArgs e)
+        {
+            DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            GroupButtonsOut.Enabled = false;
+        }
 
 
-       
-        private static void KeybordToMouse_event(object sender, KeyPressEventArgs eee)
-        {            
-            if (eee.KeyChar == 'q')
+        //
+        //
+        // Реализация назначения Запуска программы по нажатию клавиши.
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys key = e.KeyData;            
+            //string KeyboardFunctionTextBoxSTR = KeyboardFunctionTextBox.Text;
+            //char[] arr = KeyboardFunctionTextBoxSTR.ToCharArray();
+            // когда форма у нас в фокусе - при нажатии Keys.Return -- Num Enter выполняется действие в цикле
+            if (e.KeyCode == Keys.Multiply || e.KeyCode == Keys.Subtract || e.KeyCode == Keys.Add || e.KeyCode == key) 
             {
+                if (LaunchingTheProgramFileWayTextBox.Text == "")
+                {
+
+                }
+                else
+                {
+                    Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);                    
+                }
+                //MessageBox.Show("Вы нажали клавишу");
+            }
+
+            /*
+            if (e.KeyChar == Convert.ToChar(Keys.Return))
+            {
+                mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            */
+        }
+        //
+        //
+        // Функция мышки
+        private void KeybordToMouse_KeyPress(object sender, KeyPressEventArgs e)
+        {            
+            if (e.KeyChar == ' ')
+            {
+                mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
         }
 
+
+        //
+        //
+        // Функция мышки
         private void MouseFunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
@@ -365,7 +458,6 @@ namespace LazyButton
             */
         }
 
-
         //
         //
         // Кнопка в "Запуск программы" для указания файла, который нужно открыть.
@@ -383,8 +475,6 @@ namespace LazyButton
 
 
 
-
-
         //
         //
         // Это типа кнопка на ардуино
@@ -392,7 +482,7 @@ namespace LazyButton
         {
             //Process.Start("mspaint"); // запуск Paint
             //WindowState = FormWindowState.Minimized; //сворачивание окна приложения
-            LockWorkStation(); // блокировка компа = смена пользователя = Win + L
+            ///LockWorkStation(); // блокировка компа = смена пользователя = Win + L
             
             /* щелчок мыши по пуску
             mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
@@ -401,7 +491,7 @@ namespace LazyButton
             */
 
 
-            /*
+            
             //запуск указанной проги
             if (LaunchingTheProgramFileWayTextBox.Text == "")
             {
@@ -412,7 +502,7 @@ namespace LazyButton
                 Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
                 //note.WaitForInputIdle(); //блок на др действия, пока заданное приложение не запустится 
             }
-            */
+            
 
             /*
             // ввод в блокнот текста
@@ -425,20 +515,5 @@ namespace LazyButton
             SendKeys.SendWait("    Обалдеть!");
             */
         }
-
-
-        //
-        //
-        // Вывод запроса при закрытии формы
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MetroFramework.MetroMessageBox.Show(this, "Вы уверены, что хотите выйти из программы?\nЕсли вы закроете программу все назначенные назначения 'слетят'!",
-                                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        
     }
 }
