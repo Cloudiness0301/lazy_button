@@ -3,27 +3,74 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Components; //для работы метро
 using MetroFramework.Forms; //для работы метро
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using System.Collections;
+using System.Diagnostics;
 
 //1) Нужно посмотреть момент с блокировкой переходов по TabPage при нажании кнопки "подтвердить" и разблокировкой этого же, при "отменить"
 //2) Посмотреть момент со считыванием клавиш при вводе в "назначить свою". чтобы не дублировался shiftKey\altkey\controlkey (с If поиграть)
 
-namespace WindowsFormsApp1
+namespace LazyButton
 {
     public partial class Form1 : MetroForm //"Form" было изначально, а не "MetroForm"
     {
+        /*
+        // Поле для сохранения позиции окна - Field for saving window position
+        private Rectangle m_rcWindow;
+
+        // Поле для хранения регистров - Field for registy storage
+        private string m_strRegKey = "Software\\RandyRants\\LazyButton";
+
+        // Hashtable для отслеживания текста для сканирования кодов - Hashtable for tracking text to scan codes
+        private Hashtable m_hashKeys = null;
+
+        // флаг (для просмотра дорожки, если сопоставления сохранены) - Dirty flag (to see track if mappings have been saved)
+        private bool m_bDirty = false;
+        */
+
+
+
+        //Для работы с клавой.
+        [DllImport("USER32.DLL")]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("USER32.DLL")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+        //для вызова функции LockWorkStation - блокировка компа = смена пользователя = Win + L
+        [DllImport("user32.dll")]
+        private static extern void LockWorkStation();
+        //щелкаем мышкой
+        [DllImport("user32.dll")]
+        static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, UIntPtr dwExtraInfo);
+        const int MouseEventF_Move = 0x0001;
+        const int MouseEventF_LeftDown = 0x0002;
+        const int MouseEventF_LeftUp = 0x0004;
+        const int MouseEventF_RightDown = 0x0008;
+        const int MouseEventF_RightUp = 0x0010;
+        const int MouseEventF_Absolute = 0x8000;
+
+
         public Form1()
         {
             InitializeComponent();
+            ShowInTaskbar = false; // скрывает значка формы на панели задач. Если свернул - то можно вызвать только Alt+Tab
         }
+
+
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           // Cursor = Cursors.WaitCursor;
 
         }
 
@@ -33,11 +80,9 @@ namespace WindowsFormsApp1
         // Код для кнопки F.A.Q. 
         private void FAQ_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "1) Выбери один из стандартных вариантов сочетаний клавиш или введи свою.\n2) Назначь стандартную операцию или выбери свою.\n3) Нажми ''Сохранить'' и будь счатлив(а)!\nУдачи! :)",
-                "А собственно как это?",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Question);
+            MetroFramework.MetroMessageBox.Show(this,
+                "1) Выбери один из стандартных вариантов сочетаний клавиш или введи свою.\n2) Назначь стандартную операцию или выбери свою.\n3) Нажми ''Сохранить'' и будь счатлив(а)!\nУдачи! :)\n\nP.S.: Если потеряли приложение - жми Alt+Tab.",
+                "А собственно как это?", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
 
@@ -67,7 +112,9 @@ namespace WindowsFormsApp1
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
-            
+            DefaultTextBox1.Text = "ничего не назначено";
+
+
             //SelectedIndexChanded = 
             //if (LazyButtonButtonCancel.Enabled == true)  КАК СДЕЛАТЬ ТАК, ЧТОБЫ TABPAGES ЗАБЛОКИРОВАЛИСЬ ПРИ НАЖАТИИ "ПОДТВЕРДИТЬ"
         }
@@ -83,6 +130,7 @@ namespace WindowsFormsApp1
             NumPlus.Enabled = true;
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
+            DefaultTextBox1.Text = "";
             //ListGroupButtonsIn.Enabled = true;
         }
 
@@ -97,6 +145,7 @@ namespace WindowsFormsApp1
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
+            DefaultTextBox1.Text = "Num Enter";
         }
 
         //
@@ -110,6 +159,7 @@ namespace WindowsFormsApp1
             NumPlus.Enabled = true;
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
+            DefaultTextBox1.Text = "";
         }
 
         // 
@@ -123,6 +173,7 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = false;
             NumMinus.Enabled = false;
             UserButton.Enabled = false;
+            DefaultTextBox1.Text = "Num +";
         }
 
         //
@@ -136,6 +187,7 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = true;
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
+            DefaultTextBox1.Text = "";
         }
 
         //
@@ -149,6 +201,7 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = false;
             NumPlus.Enabled = false;
             UserButton.Enabled = false;
+            DefaultTextBox1.Text = "Num -";
         }
 
         //
@@ -162,6 +215,7 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = true;
             NumPlus.Enabled = true;
             UserButton.Enabled = true;
+            DefaultTextBox1.Text = "";
         }
 
         //
@@ -176,6 +230,7 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = false;
             NumPlus.Enabled = false;
             NumMinus.Enabled = false;
+            DefaultTextBox1.Text = UserButtonTextBox.Text;
         }
 
         //
@@ -190,15 +245,13 @@ namespace WindowsFormsApp1
             NumEnter.Enabled = true;
             NumPlus.Enabled = true;
             NumMinus.Enabled = true;
+            DefaultTextBox1.Text = "";
+            UserButtonTextBox.Text = "";
         }
 
         //
         //
         // ТекстБокс "на какую кнопку или сочетание клавиш назначить чет. UserButton"
-        private void UserButtonTextBox_Click(object sender, EventArgs e)
-        {
-            
-        }
         private void UserButtonTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             // очищаем поле
@@ -242,15 +295,11 @@ namespace WindowsFormsApp1
         {
             
         }
-
-
+        
+       
         //
         //
-        // ТекстБокс "какую кнопку или сочетание клавиш назначить.  KeyboardFunction"
-        private void KeyboardFunctionTextBox_Click(object sender, EventArgs e)
-        {
-
-        }
+        // ТекстБокс "какую кнопку или сочетание клавиш назначить.  KeyboardFunction"                
         private void KeyboardFunctionTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             // очищаем поле
@@ -281,6 +330,40 @@ namespace WindowsFormsApp1
         }
 
 
+       
+        private static void KeybordToMouse_event(object sender, KeyPressEventArgs eee)
+        {            
+            if (eee.KeyChar == 'q')
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+        }
+
+        private void MouseFunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
+            {
+                // KeybordToMouse_event();
+                //e.KeyCode == Keys.Enter;
+            }
+
+
+            /*
+             *  const int MouseEventF_Move = 0x0001;
+                const int MouseEventF_LeftDown = 0x0002;
+                const int MouseEventF_LeftUp = 0x0004;
+                const int MouseEventF_RightDown = 0x0008;
+                const int MouseEventF_RightUp = 0x0010;
+                const int MouseEventF_Absolute = 0x8000;
+             * 
+             * 
+             * 
+             * 
+            MessageBox.Show("Selected Item Text: " + MouseFunctionComboBox.SelectedItem.ToString() + "\n" +
+                    "Index: " + MouseFunctionComboBox.SelectedIndex.ToString());
+            */
+        }
 
 
         //
@@ -298,9 +381,64 @@ namespace WindowsFormsApp1
 
         }
 
-        private void ListGroupButtonsIn_SelectedIndexChanged(object sender, EventArgs e)
+
+
+
+
+        //
+        //
+        // Это типа кнопка на ардуино
+        private void TestButton_Click(object sender, EventArgs e)
         {
+            //Process.Start("mspaint"); // запуск Paint
+            //WindowState = FormWindowState.Minimized; //сворачивание окна приложения
+            LockWorkStation(); // блокировка компа = смена пользователя = Win + L
             
+            /* щелчок мыши по пуску
+            mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
+            mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+            mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            */
+
+
+            /*
+            //запуск указанной проги
+            if (LaunchingTheProgramFileWayTextBox.Text == "")
+            {
+
+            }
+            else
+            {
+                Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+                //note.WaitForInputIdle(); //блок на др действия, пока заданное приложение не запустится 
+            }
+            */
+
+            /*
+            // ввод в блокнот текста
+            IntPtr notepadHandle = FindWindow(null, "Блокнот");
+
+            SetForegroundWindow(notepadHandle);
+            SendKeys.SendWait("C# ");
+            SendKeys.SendWait(" Народные советы");
+            SendKeys.SendWait("~");
+            SendKeys.SendWait("    Обалдеть!");
+            */
         }
+
+
+        //
+        //
+        // Вывод запроса при закрытии формы
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MetroFramework.MetroMessageBox.Show(this, "Вы уверены, что хотите выйти из программы?\nЕсли вы закроете программу все назначенные назначения 'слетят'!",
+                                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        
     }
 }

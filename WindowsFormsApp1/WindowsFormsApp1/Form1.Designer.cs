@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace LazyButton
 {
     partial class Form1
     {
@@ -78,6 +78,7 @@
             this.LaunchingTheProgramTextBox = new MetroFramework.Controls.MetroTextBox();
             this.LaunchingTheProgramLabel = new MetroFramework.Controls.MetroLabel();
             this.LaunchingTheProgramButtonSave = new MetroFramework.Controls.MetroButton();
+            this.TestButton = new MetroFramework.Controls.MetroButton();
             this.GroupButtonsIn.SuspendLayout();
             this.ListGroupButtonsIn.SuspendLayout();
             this.LazyButton.SuspendLayout();
@@ -118,13 +119,12 @@
             this.ListGroupButtonsIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsIn.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsIn.Name = "ListGroupButtonsIn";
-            this.ListGroupButtonsIn.SelectedIndex = 0;
+            this.ListGroupButtonsIn.SelectedIndex = 4;
             this.ListGroupButtonsIn.Size = new System.Drawing.Size(874, 179);
             this.ListGroupButtonsIn.TabIndex = 0;
             this.ListGroupButtonsIn.TabStop = false;
             this.ListGroupButtonsIn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ListGroupButtonsIn.UseSelectable = true;
-            this.ListGroupButtonsIn.SelectedIndexChanged += new System.EventHandler(this.ListGroupButtonsIn_SelectedIndexChanged);
             // 
             // LazyButton
             // 
@@ -403,7 +403,6 @@
             this.UserButtonTextBox.UseStyleColors = true;
             this.UserButtonTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.UserButtonTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.UserButtonTextBox.Click += new System.EventHandler(this.UserButtonTextBox_Click);
             this.UserButtonTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserButtonTextBox_KeyDown);
             // 
             // UserButtonLabel
@@ -480,7 +479,7 @@
             this.ListGroupButtonsOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsOut.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsOut.Name = "ListGroupButtonsOut";
-            this.ListGroupButtonsOut.SelectedIndex = 0;
+            this.ListGroupButtonsOut.SelectedIndex = 1;
             this.ListGroupButtonsOut.Size = new System.Drawing.Size(874, 303);
             this.ListGroupButtonsOut.Style = MetroFramework.MetroColorStyle.Green;
             this.ListGroupButtonsOut.TabIndex = 0;
@@ -630,7 +629,6 @@
             this.KeyboardFunctionTextBox.UseStyleColors = true;
             this.KeyboardFunctionTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.KeyboardFunctionTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.KeyboardFunctionTextBox.Click += new System.EventHandler(this.KeyboardFunctionTextBox_Click);
             this.KeyboardFunctionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardFunctionTextBox_KeyDown);
             // 
             // KeyboardFunctionButtonSave
@@ -681,6 +679,7 @@
             this.MouseFunctionComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.MouseFunctionComboBox.UseSelectable = true;
             this.MouseFunctionComboBox.UseStyleColors = true;
+            this.MouseFunctionComboBox.SelectedIndexChanged += new System.EventHandler(this.MouseFunctionComboBox_SelectedIndexChanged);
             // 
             // MouseFunctionLabel
             // 
@@ -874,6 +873,7 @@
             this.LaunchingTheProgramTextBox.MaxLength = 32767;
             this.LaunchingTheProgramTextBox.Name = "LaunchingTheProgramTextBox";
             this.LaunchingTheProgramTextBox.PasswordChar = '\0';
+            this.LaunchingTheProgramTextBox.ReadOnly = true;
             this.LaunchingTheProgramTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.LaunchingTheProgramTextBox.SelectedText = "";
             this.LaunchingTheProgramTextBox.SelectionLength = 0;
@@ -914,11 +914,22 @@
             this.LaunchingTheProgramButtonSave.UseSelectable = true;
             this.LaunchingTheProgramButtonSave.UseStyleColors = true;
             // 
+            // TestButton
+            // 
+            this.TestButton.Location = new System.Drawing.Point(495, 23);
+            this.TestButton.Name = "TestButton";
+            this.TestButton.Size = new System.Drawing.Size(184, 23);
+            this.TestButton.TabIndex = 5;
+            this.TestButton.Text = "TestButton";
+            this.TestButton.UseSelectable = true;
+            this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 640);
+            this.Controls.Add(this.TestButton);
             this.Controls.Add(this.GroupButtonsOut);
             this.Controls.Add(this.FAQ);
             this.Controls.Add(this.GroupButtonsIn);
@@ -933,6 +944,7 @@
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Переназначить? ну давай..";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GroupButtonsIn.ResumeLayout(false);
             this.ListGroupButtonsIn.ResumeLayout(false);
@@ -1007,12 +1019,12 @@
         private MetroFramework.Controls.MetroComboBox WINDOWSKeyCombinationComboBox;
         private MetroFramework.Controls.MetroLabel WINDOWSKeyCombinationLabel;
         private MetroFramework.Controls.MetroLabel LaunchingTheProgramLabel;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private MetroFramework.Controls.MetroButton LaunchingTheProgramButtonOpen;
         private MetroFramework.Controls.MetroTextBox LaunchingTheProgramTextBox;
         private MetroFramework.Controls.MetroLabel LaunchingTheProgramFileWayLabel;
         private MetroFramework.Controls.MetroTextBox LaunchingTheProgramFileWayTextBox;
         private MetroFramework.Controls.MetroTextBox UserButtonTextBox;
+        private MetroFramework.Controls.MetroButton TestButton;
     }
 }
 
