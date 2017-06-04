@@ -413,10 +413,47 @@ namespace LazyButton
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Keys key = e.KeyData;            
-            //string KeyboardFunctionTextBoxSTR = KeyboardFunctionTextBox.Text;
-            //char[] arr = KeyboardFunctionTextBoxSTR.ToCharArray();
-            // когда форма у нас в фокусе - при нажатии Keys.Return -- Num Enter выполняется действие в цикле
-            if (e.KeyCode == Keys.Multiply || e.KeyCode == Keys.Subtract || e.KeyCode == Keys.Add || e.KeyCode == key) 
+            KeysConverter converter = new KeysConverter();
+            string text = converter.ConvertToString(e.KeyCode);
+
+            // Цикл запуска программы на нажание Num Multiply.
+            if (e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            {
+                if (LaunchingTheProgramFileWayTextBox.Text == "")
+                {
+
+                }
+                else
+                {
+                    Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+                }
+            }
+            // Цикл запуска программы на нажатие Num Plus.
+            if (e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            {
+                if (LaunchingTheProgramFileWayTextBox.Text == "")
+                {
+
+                }
+                else
+                {
+                    Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+                }
+            }
+            // Цикл запуска программы на нажатие Num Minus.
+            if (e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            {
+                if (LaunchingTheProgramFileWayTextBox.Text == "")
+                {
+
+                }
+                else
+                {
+                    Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+                }
+            }
+            // Цикл запуска программы на назначенную пользователем клавишу.
+            if (((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
                 {
@@ -425,11 +462,12 @@ namespace LazyButton
                 else
                 {
                     Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);                    
-                }
-                //MessageBox.Show("Вы нажали клавишу");
+                }                
             }
 
-            /*
+
+            /* 
+            // когда форма у нас в фокусе - при нажатии Keys.Return -- Num Enter выполняется действие в цикле
             if (e.KeyChar == Convert.ToChar(Keys.Return))
             {
                 mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
@@ -504,7 +542,7 @@ namespace LazyButton
         {
             //Process.Start("mspaint"); // запуск Paint
             //WindowState = FormWindowState.Minimized; //сворачивание окна приложения
-            ///LockWorkStation(); // блокировка компа = смена пользователя = Win + L
+            LockWorkStation(); // блокировка компа = смена пользователя = Win + L
             
             /* щелчок мыши по пуску
             mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
@@ -513,7 +551,7 @@ namespace LazyButton
             */
 
 
-            
+            /*
             //запуск указанной проги
             if (LaunchingTheProgramFileWayTextBox.Text == "")
             {
@@ -524,7 +562,7 @@ namespace LazyButton
                 Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
                 //note.WaitForInputIdle(); //блок на др действия, пока заданное приложение не запустится 
             }
-            
+            */
 
             /*
             // ввод в блокнот текста

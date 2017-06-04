@@ -119,7 +119,7 @@
             this.ListGroupButtonsIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsIn.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsIn.Name = "ListGroupButtonsIn";
-            this.ListGroupButtonsIn.SelectedIndex = 1;
+            this.ListGroupButtonsIn.SelectedIndex = 3;
             this.ListGroupButtonsIn.Size = new System.Drawing.Size(874, 179);
             this.ListGroupButtonsIn.TabIndex = 0;
             this.ListGroupButtonsIn.TabStop = false;
@@ -411,9 +411,9 @@
             this.UserButtonLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.UserButtonLabel.Location = new System.Drawing.Point(304, 33);
             this.UserButtonLabel.Name = "UserButtonLabel";
-            this.UserButtonLabel.Size = new System.Drawing.Size(234, 19);
+            this.UserButtonLabel.Size = new System.Drawing.Size(122, 19);
             this.UserButtonLabel.TabIndex = 9;
-            this.UserButtonLabel.Text = "Нажмите клавишу или их сочетание:";
+            this.UserButtonLabel.Text = "Нажмите клавишу:";
             this.UserButtonLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.UserButtonLabel.UseStyleColors = true;
             // 
