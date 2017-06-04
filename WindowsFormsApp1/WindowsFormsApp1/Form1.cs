@@ -43,7 +43,7 @@ namespace LazyButton
         public Form1()
         {
             InitializeComponent();
-            ShowInTaskbar = false; // скрывает значка формы на панели задач. Если свернул - то можно вызвать только Alt+Tab.
+           // ShowInTaskbar = false; // скрывает значка формы на панели задач. Если свернул - то можно вызвать только Alt+Tab.
         }
                 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,7 +51,6 @@ namespace LazyButton
            // Cursor = Cursors.WaitCursor;
 
         }               
-
         //
         //
         // Код для кнопки F.A.Q. 
@@ -72,7 +71,6 @@ namespace LazyButton
                 e.Cancel = true;
             }
         }
-
         //
         //
         //!!!***   ВЕРХЯЯ ГРУППА   ***!!!\\\ 
@@ -85,7 +83,6 @@ namespace LazyButton
         {
 
         }
-
         //
         //
         // Кнопка "Подтвердить выбор назначаемой кнопки: LazyButton".
@@ -118,6 +115,11 @@ namespace LazyButton
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
             DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
             //ListGroupButtonsIn.Enabled = true;
         }
 
@@ -149,6 +151,11 @@ namespace LazyButton
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
             DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
         }
 
         // 
@@ -179,6 +186,11 @@ namespace LazyButton
             NumMinus.Enabled = true;
             UserButton.Enabled = true;
             DefaultTextBox1.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
         }
 
         //
@@ -208,7 +220,12 @@ namespace LazyButton
             NumMultiply.Enabled = true;
             NumPlus.Enabled = true;
             UserButton.Enabled = true;
-            DefaultTextBox1.Text = "";
+            DefaultTextBox1.Text = "";            
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
         }
 
         //
@@ -241,6 +258,11 @@ namespace LazyButton
             NumMinus.Enabled = true;
             DefaultTextBox1.Text = "";
             UserButtonTextBox.Text = "";
+            KeyboardFunctionTextBox.Text = "";
+            MouseFunctionComboBox.SelectedItem = "---";
+            WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
+            LaunchingTheProgramTextBox.Text = "";
+            LaunchingTheProgramFileWayTextBox.Text = "";
         }
 
         //
