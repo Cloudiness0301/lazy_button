@@ -78,7 +78,7 @@
             this.LaunchingTheProgramTextBox = new MetroFramework.Controls.MetroTextBox();
             this.LaunchingTheProgramLabel = new MetroFramework.Controls.MetroLabel();
             this.LaunchingTheProgramButtonSave = new MetroFramework.Controls.MetroButton();
-            this.TestButton = new MetroFramework.Controls.MetroButton();
+            this.TestButtonLazyButton = new MetroFramework.Controls.MetroButton();
             this.GroupButtonsIn.SuspendLayout();
             this.ListGroupButtonsIn.SuspendLayout();
             this.LazyButton.SuspendLayout();
@@ -104,7 +104,7 @@
             this.GroupButtonsIn.Location = new System.Drawing.Point(20, 60);
             this.GroupButtonsIn.Name = "GroupButtonsIn";
             this.GroupButtonsIn.Size = new System.Drawing.Size(880, 207);
-            this.GroupButtonsIn.TabIndex = 2;
+            this.GroupButtonsIn.TabIndex = 1;
             this.GroupButtonsIn.TabStop = false;
             this.GroupButtonsIn.Text = "Вы назначаете на клавишу ...";
             this.GroupButtonsIn.Enter += new System.EventHandler(this.GroupButtonsIn_Enter);
@@ -119,9 +119,9 @@
             this.ListGroupButtonsIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsIn.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsIn.Name = "ListGroupButtonsIn";
-            this.ListGroupButtonsIn.SelectedIndex = 3;
+            this.ListGroupButtonsIn.SelectedIndex = 4;
             this.ListGroupButtonsIn.Size = new System.Drawing.Size(874, 179);
-            this.ListGroupButtonsIn.TabIndex = 0;
+            this.ListGroupButtonsIn.TabIndex = 2;
             this.ListGroupButtonsIn.TabStop = false;
             this.ListGroupButtonsIn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ListGroupButtonsIn.UseSelectable = true;
@@ -151,7 +151,7 @@
             this.LazyButtonLabel.Location = new System.Drawing.Point(270, 45);
             this.LazyButtonLabel.Name = "LazyButtonLabel";
             this.LazyButtonLabel.Size = new System.Drawing.Size(340, 19);
-            this.LazyButtonLabel.TabIndex = 4;
+            this.LazyButtonLabel.TabIndex = 3;
             this.LazyButtonLabel.Text = "Дистанционная кнопка, прилагающаяся в комплекте.";
             this.LazyButtonLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LazyButtonLabel.UseStyleColors = true;
@@ -162,7 +162,7 @@
             this.LazyButtonButtonCancel.Location = new System.Drawing.Point(699, 105);
             this.LazyButtonButtonCancel.Name = "LazyButtonButtonCancel";
             this.LazyButtonButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.LazyButtonButtonCancel.TabIndex = 3;
+            this.LazyButtonButtonCancel.TabIndex = 5;
             this.LazyButtonButtonCancel.TabStop = false;
             this.LazyButtonButtonCancel.Text = "Отменить";
             this.LazyButtonButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -174,7 +174,7 @@
             this.LazyButtonButtonОК.Location = new System.Drawing.Point(551, 105);
             this.LazyButtonButtonОК.Name = "LazyButtonButtonОК";
             this.LazyButtonButtonОК.Size = new System.Drawing.Size(127, 29);
-            this.LazyButtonButtonОК.TabIndex = 2;
+            this.LazyButtonButtonОК.TabIndex = 4;
             this.LazyButtonButtonОК.TabStop = false;
             this.LazyButtonButtonОК.Text = "Подтвердить";
             this.LazyButtonButtonОК.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -218,7 +218,7 @@
             this.NumMultiplyButtonCancel.Location = new System.Drawing.Point(699, 105);
             this.NumMultiplyButtonCancel.Name = "NumMultiplyButtonCancel";
             this.NumMultiplyButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.NumMultiplyButtonCancel.TabIndex = 5;
+            this.NumMultiplyButtonCancel.TabIndex = 8;
             this.NumMultiplyButtonCancel.TabStop = false;
             this.NumMultiplyButtonCancel.Text = "Отменить";
             this.NumMultiplyButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -230,7 +230,7 @@
             this.NumMultiplyButtonOK.Location = new System.Drawing.Point(551, 105);
             this.NumMultiplyButtonOK.Name = "NumMultiplyButtonOK";
             this.NumMultiplyButtonOK.Size = new System.Drawing.Size(127, 29);
-            this.NumMultiplyButtonOK.TabIndex = 4;
+            this.NumMultiplyButtonOK.TabIndex = 7;
             this.NumMultiplyButtonOK.TabStop = false;
             this.NumMultiplyButtonOK.Text = "Подтвердить";
             this.NumMultiplyButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -263,7 +263,7 @@
             this.NumPlusLabel.Location = new System.Drawing.Point(350, 45);
             this.NumPlusLabel.Name = "NumPlusLabel";
             this.NumPlusLabel.Size = new System.Drawing.Size(165, 19);
-            this.NumPlusLabel.TabIndex = 7;
+            this.NumPlusLabel.TabIndex = 9;
             this.NumPlusLabel.Text = "Нажатие \"+\" на NumLock.";
             this.NumPlusLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.NumPlusLabel.UseStyleColors = true;
@@ -274,7 +274,7 @@
             this.NumPlusButtonCancel.Location = new System.Drawing.Point(699, 105);
             this.NumPlusButtonCancel.Name = "NumPlusButtonCancel";
             this.NumPlusButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.NumPlusButtonCancel.TabIndex = 5;
+            this.NumPlusButtonCancel.TabIndex = 11;
             this.NumPlusButtonCancel.TabStop = false;
             this.NumPlusButtonCancel.Text = "Отменить";
             this.NumPlusButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -286,7 +286,7 @@
             this.NumPlusButtonOK.Location = new System.Drawing.Point(551, 105);
             this.NumPlusButtonOK.Name = "NumPlusButtonOK";
             this.NumPlusButtonOK.Size = new System.Drawing.Size(127, 29);
-            this.NumPlusButtonOK.TabIndex = 4;
+            this.NumPlusButtonOK.TabIndex = 10;
             this.NumPlusButtonOK.TabStop = false;
             this.NumPlusButtonOK.Text = "Подтвердить";
             this.NumPlusButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -319,7 +319,7 @@
             this.NumMinusLabel.Location = new System.Drawing.Point(350, 45);
             this.NumMinusLabel.Name = "NumMinusLabel";
             this.NumMinusLabel.Size = new System.Drawing.Size(162, 19);
-            this.NumMinusLabel.TabIndex = 8;
+            this.NumMinusLabel.TabIndex = 12;
             this.NumMinusLabel.Text = "Нажатие \"-\" на NumLock.";
             this.NumMinusLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.NumMinusLabel.UseStyleColors = true;
@@ -330,7 +330,7 @@
             this.NumMinusButtonCancel.Location = new System.Drawing.Point(699, 105);
             this.NumMinusButtonCancel.Name = "NumMinusButtonCancel";
             this.NumMinusButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.NumMinusButtonCancel.TabIndex = 5;
+            this.NumMinusButtonCancel.TabIndex = 14;
             this.NumMinusButtonCancel.TabStop = false;
             this.NumMinusButtonCancel.Text = "Отменить";
             this.NumMinusButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -342,7 +342,7 @@
             this.NumMinusButtonOK.Location = new System.Drawing.Point(551, 105);
             this.NumMinusButtonOK.Name = "NumMinusButtonOK";
             this.NumMinusButtonOK.Size = new System.Drawing.Size(127, 29);
-            this.NumMinusButtonOK.TabIndex = 4;
+            this.NumMinusButtonOK.TabIndex = 13;
             this.NumMinusButtonOK.TabStop = false;
             this.NumMinusButtonOK.Text = "Подтвердить";
             this.NumMinusButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -396,7 +396,7 @@
             this.UserButtonTextBox.ShortcutsEnabled = true;
             this.UserButtonTextBox.Size = new System.Drawing.Size(275, 23);
             this.UserButtonTextBox.Style = MetroFramework.MetroColorStyle.Orange;
-            this.UserButtonTextBox.TabIndex = 10;
+            this.UserButtonTextBox.TabIndex = 16;
             this.UserButtonTextBox.TabStop = false;
             this.UserButtonTextBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.UserButtonTextBox.UseSelectable = true;
@@ -412,7 +412,7 @@
             this.UserButtonLabel.Location = new System.Drawing.Point(304, 33);
             this.UserButtonLabel.Name = "UserButtonLabel";
             this.UserButtonLabel.Size = new System.Drawing.Size(122, 19);
-            this.UserButtonLabel.TabIndex = 9;
+            this.UserButtonLabel.TabIndex = 15;
             this.UserButtonLabel.Text = "Нажмите клавишу:";
             this.UserButtonLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.UserButtonLabel.UseStyleColors = true;
@@ -423,7 +423,7 @@
             this.UserButtonButtonCancel.Location = new System.Drawing.Point(699, 105);
             this.UserButtonButtonCancel.Name = "UserButtonButtonCancel";
             this.UserButtonButtonCancel.Size = new System.Drawing.Size(127, 29);
-            this.UserButtonButtonCancel.TabIndex = 5;
+            this.UserButtonButtonCancel.TabIndex = 18;
             this.UserButtonButtonCancel.TabStop = false;
             this.UserButtonButtonCancel.Text = "Отменить";
             this.UserButtonButtonCancel.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -435,7 +435,7 @@
             this.UserButtonButtonOK.Location = new System.Drawing.Point(551, 105);
             this.UserButtonButtonOK.Name = "UserButtonButtonOK";
             this.UserButtonButtonOK.Size = new System.Drawing.Size(127, 29);
-            this.UserButtonButtonOK.TabIndex = 4;
+            this.UserButtonButtonOK.TabIndex = 17;
             this.UserButtonButtonOK.TabStop = false;
             this.UserButtonButtonOK.Text = "Подтвердить";
             this.UserButtonButtonOK.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -448,7 +448,7 @@
             this.FAQ.Location = new System.Drawing.Point(774, 23);
             this.FAQ.Name = "FAQ";
             this.FAQ.Size = new System.Drawing.Size(79, 31);
-            this.FAQ.TabIndex = 3;
+            this.FAQ.TabIndex = 39;
             this.FAQ.TabStop = false;
             this.FAQ.Text = "F.A.Q.";
             this.FAQ.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -464,7 +464,7 @@
             this.GroupButtonsOut.Location = new System.Drawing.Point(20, 286);
             this.GroupButtonsOut.Name = "GroupButtonsOut";
             this.GroupButtonsOut.Size = new System.Drawing.Size(880, 331);
-            this.GroupButtonsOut.TabIndex = 4;
+            this.GroupButtonsOut.TabIndex = 19;
             this.GroupButtonsOut.TabStop = false;
             this.GroupButtonsOut.Text = "Назначение клавиши ...";
             this.GroupButtonsOut.Enter += new System.EventHandler(this.GroupButtonsOut_Enter);
@@ -479,10 +479,10 @@
             this.ListGroupButtonsOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsOut.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsOut.Name = "ListGroupButtonsOut";
-            this.ListGroupButtonsOut.SelectedIndex = 3;
+            this.ListGroupButtonsOut.SelectedIndex = 4;
             this.ListGroupButtonsOut.Size = new System.Drawing.Size(874, 303);
             this.ListGroupButtonsOut.Style = MetroFramework.MetroColorStyle.Green;
-            this.ListGroupButtonsOut.TabIndex = 0;
+            this.ListGroupButtonsOut.TabIndex = 20;
             this.ListGroupButtonsOut.TabStop = false;
             this.ListGroupButtonsOut.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ListGroupButtonsOut.UseSelectable = true;
@@ -532,7 +532,7 @@
             this.DefaultTextBox1.ShortcutsEnabled = true;
             this.DefaultTextBox1.Size = new System.Drawing.Size(275, 23);
             this.DefaultTextBox1.Style = MetroFramework.MetroColorStyle.Orange;
-            this.DefaultTextBox1.TabIndex = 7;
+            this.DefaultTextBox1.TabIndex = 22;
             this.DefaultTextBox1.TabStop = false;
             this.DefaultTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.DefaultTextBox1.UseSelectable = true;
@@ -547,7 +547,7 @@
             this.DefaultLabel.Name = "DefaultLabel";
             this.DefaultLabel.Size = new System.Drawing.Size(161, 19);
             this.DefaultLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.DefaultLabel.TabIndex = 6;
+            this.DefaultLabel.TabIndex = 21;
             this.DefaultLabel.Text = "Клавиша по умолчанию:";
             this.DefaultLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.DefaultLabel.UseStyleColors = true;
@@ -558,7 +558,7 @@
             this.DefaultButtonSave.Name = "DefaultButtonSave";
             this.DefaultButtonSave.Size = new System.Drawing.Size(127, 29);
             this.DefaultButtonSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.DefaultButtonSave.TabIndex = 5;
+            this.DefaultButtonSave.TabIndex = 23;
             this.DefaultButtonSave.TabStop = false;
             this.DefaultButtonSave.Text = "Сохранить";
             this.DefaultButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -591,7 +591,7 @@
             this.KeyboardFunctionLabel.Name = "KeyboardFunctionLabel";
             this.KeyboardFunctionLabel.Size = new System.Drawing.Size(242, 19);
             this.KeyboardFunctionLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.KeyboardFunctionLabel.TabIndex = 9;
+            this.KeyboardFunctionLabel.TabIndex = 24;
             this.KeyboardFunctionLabel.Text = "Назначьте клавишу или их сочетание:";
             this.KeyboardFunctionLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.KeyboardFunctionLabel.UseStyleColors = true;
@@ -623,7 +623,7 @@
             this.KeyboardFunctionTextBox.ShortcutsEnabled = true;
             this.KeyboardFunctionTextBox.Size = new System.Drawing.Size(275, 23);
             this.KeyboardFunctionTextBox.Style = MetroFramework.MetroColorStyle.Orange;
-            this.KeyboardFunctionTextBox.TabIndex = 8;
+            this.KeyboardFunctionTextBox.TabIndex = 25;
             this.KeyboardFunctionTextBox.TabStop = false;
             this.KeyboardFunctionTextBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.KeyboardFunctionTextBox.UseSelectable = true;
@@ -638,7 +638,7 @@
             this.KeyboardFunctionButtonSave.Name = "KeyboardFunctionButtonSave";
             this.KeyboardFunctionButtonSave.Size = new System.Drawing.Size(127, 29);
             this.KeyboardFunctionButtonSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.KeyboardFunctionButtonSave.TabIndex = 6;
+            this.KeyboardFunctionButtonSave.TabIndex = 26;
             this.KeyboardFunctionButtonSave.TabStop = false;
             this.KeyboardFunctionButtonSave.Text = "Сохранить";
             this.KeyboardFunctionButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -677,12 +677,11 @@
             this.MouseFunctionComboBox.Name = "MouseFunctionComboBox";
             this.MouseFunctionComboBox.Size = new System.Drawing.Size(275, 29);
             this.MouseFunctionComboBox.Style = MetroFramework.MetroColorStyle.Green;
-            this.MouseFunctionComboBox.TabIndex = 11;
+            this.MouseFunctionComboBox.TabIndex = 28;
             this.MouseFunctionComboBox.TabStop = false;
             this.MouseFunctionComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.MouseFunctionComboBox.UseSelectable = true;
             this.MouseFunctionComboBox.UseStyleColors = true;
-            this.MouseFunctionComboBox.SelectedIndexChanged += new System.EventHandler(this.MouseFunctionComboBox_SelectedIndexChanged);
             // 
             // MouseFunctionLabel
             // 
@@ -691,7 +690,7 @@
             this.MouseFunctionLabel.Name = "MouseFunctionLabel";
             this.MouseFunctionLabel.Size = new System.Drawing.Size(242, 19);
             this.MouseFunctionLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.MouseFunctionLabel.TabIndex = 10;
+            this.MouseFunctionLabel.TabIndex = 27;
             this.MouseFunctionLabel.Text = "Назначьте клавишу или их сочетание:";
             this.MouseFunctionLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.MouseFunctionLabel.UseStyleColors = true;
@@ -702,7 +701,7 @@
             this.MouseFunctionButtonSave.Name = "MouseFunctionButtonSave";
             this.MouseFunctionButtonSave.Size = new System.Drawing.Size(127, 29);
             this.MouseFunctionButtonSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.MouseFunctionButtonSave.TabIndex = 7;
+            this.MouseFunctionButtonSave.TabIndex = 29;
             this.MouseFunctionButtonSave.TabStop = false;
             this.MouseFunctionButtonSave.Text = "Сохранить";
             this.MouseFunctionButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -742,7 +741,7 @@
             this.WINDOWSKeyCombinationComboBox.Name = "WINDOWSKeyCombinationComboBox";
             this.WINDOWSKeyCombinationComboBox.Size = new System.Drawing.Size(275, 29);
             this.WINDOWSKeyCombinationComboBox.Style = MetroFramework.MetroColorStyle.Green;
-            this.WINDOWSKeyCombinationComboBox.TabIndex = 12;
+            this.WINDOWSKeyCombinationComboBox.TabIndex = 31;
             this.WINDOWSKeyCombinationComboBox.TabStop = false;
             this.WINDOWSKeyCombinationComboBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.WINDOWSKeyCombinationComboBox.UseSelectable = true;
@@ -755,7 +754,7 @@
             this.WINDOWSKeyCombinationLabel.Name = "WINDOWSKeyCombinationLabel";
             this.WINDOWSKeyCombinationLabel.Size = new System.Drawing.Size(242, 19);
             this.WINDOWSKeyCombinationLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.WINDOWSKeyCombinationLabel.TabIndex = 11;
+            this.WINDOWSKeyCombinationLabel.TabIndex = 30;
             this.WINDOWSKeyCombinationLabel.Text = "Назначьте клавишу или их сочетание:";
             this.WINDOWSKeyCombinationLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.WINDOWSKeyCombinationLabel.UseStyleColors = true;
@@ -766,7 +765,7 @@
             this.WINDOWSKeyCombinationButtonSave.Name = "WINDOWSKeyCombinationButtonSave";
             this.WINDOWSKeyCombinationButtonSave.Size = new System.Drawing.Size(127, 29);
             this.WINDOWSKeyCombinationButtonSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.WINDOWSKeyCombinationButtonSave.TabIndex = 8;
+            this.WINDOWSKeyCombinationButtonSave.TabIndex = 32;
             this.WINDOWSKeyCombinationButtonSave.TabStop = false;
             this.WINDOWSKeyCombinationButtonSave.Text = "Сохранить";
             this.WINDOWSKeyCombinationButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -802,7 +801,7 @@
             this.LaunchingTheProgramFileWayLabel.Name = "LaunchingTheProgramFileWayLabel";
             this.LaunchingTheProgramFileWayLabel.Size = new System.Drawing.Size(90, 19);
             this.LaunchingTheProgramFileWayLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.LaunchingTheProgramFileWayLabel.TabIndex = 16;
+            this.LaunchingTheProgramFileWayLabel.TabIndex = 36;
             this.LaunchingTheProgramFileWayLabel.Text = "Полный путь:";
             this.LaunchingTheProgramFileWayLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramFileWayLabel.UseStyleColors = true;
@@ -834,7 +833,7 @@
             this.LaunchingTheProgramFileWayTextBox.ShortcutsEnabled = true;
             this.LaunchingTheProgramFileWayTextBox.Size = new System.Drawing.Size(374, 23);
             this.LaunchingTheProgramFileWayTextBox.Style = MetroFramework.MetroColorStyle.Orange;
-            this.LaunchingTheProgramFileWayTextBox.TabIndex = 15;
+            this.LaunchingTheProgramFileWayTextBox.TabIndex = 37;
             this.LaunchingTheProgramFileWayTextBox.TabStop = false;
             this.LaunchingTheProgramFileWayTextBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramFileWayTextBox.UseSelectable = true;
@@ -850,7 +849,8 @@
             this.LaunchingTheProgramButtonOpen.Name = "LaunchingTheProgramButtonOpen";
             this.LaunchingTheProgramButtonOpen.Size = new System.Drawing.Size(25, 25);
             this.LaunchingTheProgramButtonOpen.Style = MetroFramework.MetroColorStyle.Green;
-            this.LaunchingTheProgramButtonOpen.TabIndex = 14;
+            this.LaunchingTheProgramButtonOpen.TabIndex = 35;
+            this.LaunchingTheProgramButtonOpen.TabStop = false;
             this.LaunchingTheProgramButtonOpen.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramButtonOpen.UseSelectable = true;
             this.LaunchingTheProgramButtonOpen.UseStyleColors = true;
@@ -883,7 +883,7 @@
             this.LaunchingTheProgramTextBox.ShortcutsEnabled = true;
             this.LaunchingTheProgramTextBox.Size = new System.Drawing.Size(275, 23);
             this.LaunchingTheProgramTextBox.Style = MetroFramework.MetroColorStyle.Orange;
-            this.LaunchingTheProgramTextBox.TabIndex = 13;
+            this.LaunchingTheProgramTextBox.TabIndex = 34;
             this.LaunchingTheProgramTextBox.TabStop = false;
             this.LaunchingTheProgramTextBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramTextBox.UseSelectable = true;
@@ -898,7 +898,7 @@
             this.LaunchingTheProgramLabel.Name = "LaunchingTheProgramLabel";
             this.LaunchingTheProgramLabel.Size = new System.Drawing.Size(143, 19);
             this.LaunchingTheProgramLabel.Style = MetroFramework.MetroColorStyle.Green;
-            this.LaunchingTheProgramLabel.TabIndex = 12;
+            this.LaunchingTheProgramLabel.TabIndex = 33;
             this.LaunchingTheProgramLabel.Text = "Запустить программу:";
             this.LaunchingTheProgramLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.LaunchingTheProgramLabel.UseStyleColors = true;
@@ -909,7 +909,7 @@
             this.LaunchingTheProgramButtonSave.Name = "LaunchingTheProgramButtonSave";
             this.LaunchingTheProgramButtonSave.Size = new System.Drawing.Size(127, 29);
             this.LaunchingTheProgramButtonSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.LaunchingTheProgramButtonSave.TabIndex = 6;
+            this.LaunchingTheProgramButtonSave.TabIndex = 38;
             this.LaunchingTheProgramButtonSave.TabStop = false;
             this.LaunchingTheProgramButtonSave.Text = "Сохранить";
             this.LaunchingTheProgramButtonSave.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -917,22 +917,23 @@
             this.LaunchingTheProgramButtonSave.UseStyleColors = true;
             this.LaunchingTheProgramButtonSave.Click += new System.EventHandler(this.LaunchingTheProgramButtonSave_Click);
             // 
-            // TestButton
+            // TestButtonLazyButton
             // 
-            this.TestButton.Location = new System.Drawing.Point(495, 23);
-            this.TestButton.Name = "TestButton";
-            this.TestButton.Size = new System.Drawing.Size(184, 23);
-            this.TestButton.TabIndex = 5;
-            this.TestButton.Text = "TestButtonLazyButton";
-            this.TestButton.UseSelectable = true;
-            this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
+            this.TestButtonLazyButton.Location = new System.Drawing.Point(495, 23);
+            this.TestButtonLazyButton.Name = "TestButtonLazyButton";
+            this.TestButtonLazyButton.Size = new System.Drawing.Size(184, 23);
+            this.TestButtonLazyButton.TabIndex = 40;
+            this.TestButtonLazyButton.TabStop = false;
+            this.TestButtonLazyButton.Text = "TestButtonLazyButton";
+            this.TestButtonLazyButton.UseSelectable = true;
+            this.TestButtonLazyButton.Click += new System.EventHandler(this.TestButtonLazyButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 640);
-            this.Controls.Add(this.TestButton);
+            this.Controls.Add(this.TestButtonLazyButton);
             this.Controls.Add(this.GroupButtonsOut);
             this.Controls.Add(this.FAQ);
             this.Controls.Add(this.GroupButtonsIn);
@@ -950,7 +951,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeybordToMouse_KeyPress);
             this.GroupButtonsIn.ResumeLayout(false);
             this.ListGroupButtonsIn.ResumeLayout(false);
             this.LazyButton.ResumeLayout(false);
@@ -1029,7 +1029,7 @@
         private MetroFramework.Controls.MetroLabel LaunchingTheProgramFileWayLabel;
         private MetroFramework.Controls.MetroTextBox LaunchingTheProgramFileWayTextBox;
         private MetroFramework.Controls.MetroTextBox UserButtonTextBox;
-        private MetroFramework.Controls.MetroButton TestButton;
+        private MetroFramework.Controls.MetroButton TestButtonLazyButton;
     }
 }
 

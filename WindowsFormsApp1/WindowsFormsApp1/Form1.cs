@@ -652,53 +652,6 @@ namespace LazyButton
             */
         }
 
-
-
-
-
-        //
-        //
-        // Функция мышки. при нажатии пробела курсор переходит на "пуск" и тыкает по нему
-        private void KeybordToMouse_KeyPress(object sender, KeyPressEventArgs e)
-        {            
-            if (e.KeyChar == ' ')
-            {
-                mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
-                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
-                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
-            }
-        }
-
-
-        //
-        //
-        // Функция мышки
-        private void MouseFunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Цикл запуска Щелчка мыши на нажание Num Multiply.
-            if (MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
-            {
-                // KeybordToMouse_event();
-                //e.KeyCode == Keys.Enter;
-            }
-
-
-            /*
-             *  const int MouseEventF_Move = 0x0001;
-                const int MouseEventF_LeftDown = 0x0002;
-                const int MouseEventF_LeftUp = 0x0004;
-                const int MouseEventF_RightDown = 0x0008;
-                const int MouseEventF_RightUp = 0x0010;
-                const int MouseEventF_Absolute = 0x8000;
-             * 
-             * 
-             * 
-             * 
-            MessageBox.Show("Selected Item Text: " + MouseFunctionComboBox.SelectedItem.ToString() + "\n" +
-                    "Index: " + MouseFunctionComboBox.SelectedIndex.ToString());
-            */
-        }
-
         //
         //
         // Кнопка в "Запуск программы" для указания файла, который нужно открыть.
@@ -711,54 +664,159 @@ namespace LazyButton
                 LaunchingTheProgramTextBox.Text = ofd.SafeFileName;
                 LaunchingTheProgramFileWayTextBox.Text = ofd.FileName;
             }
-
         }
-
-
 
         //
         //
         // Это типа кнопка на ардуино
-        private void TestButton_Click(object sender, EventArgs e)
+        private void TestButtonLazyButton_Click(object sender, EventArgs e)
         {
-            //Process.Start("mspaint"); // запуск Paint
-            //WindowState = FormWindowState.Minimized; //сворачивание окна приложения
-            //LockWorkStation(); // блокировка компа = смена пользователя = Win + L
+            // 1) Реализация назначения Запуска программы по нажатию Кнопки.
+            // Цикл запуска программы на нажание TestButtonLazyButton.
+            if (LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                if (LaunchingTheProgramFileWayTextBox.Text == "")
+                {
 
-            // свернуть все окна
-            //Shell32.Shell shell = new Shell32.Shell();
-            //shell.MinimizeAll();
+                }
+                else
+                {
+                    Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+                }
+            }
             
-            /* щелчок мыши по пуску
-            mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
-            mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
-            mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
-            */
-
-
-            /*
-            //запуск указанной проги
-            if (LaunchingTheProgramFileWayTextBox.Text == "")
+            // 2) Реализация назначения Функции мыши.
+            // Цикл запуска Щелчка мыши на нажание TestButtonLazyButton.
+            if (MouseFunctionComboBox.SelectedItem == "Щелчок" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
-
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
-            else
+            // Цикл запуска Двойного щелчка мыши на нажание TestButtonLazyButton.
+            if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
-                Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
-                //note.WaitForInputIdle(); //блок на др действия, пока заданное приложение не запустится 
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
-            */
+            // Цикл запуска Меню мыши на нажание TestButtonLazyButton.
+            if (MouseFunctionComboBox.SelectedItem == "Меню" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+            }
 
-            /*
-            // ввод в блокнот текста
-            IntPtr notepadHandle = FindWindow(null, "Блокнот");
+            // 3) Реализация назначения Сочетания клавиш Windows.
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажание TestButtonLazyButton.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                LockWorkStation();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажание TestButtonLazyButton.
+            Shell32.Shell shell = new Shell32.Shell();
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                shell.MinimizeAll();
+            }
 
-            SetForegroundWindow(notepadHandle);
-            SendKeys.SendWait("C# ");
-            SendKeys.SendWait(" Народные советы");
-            SendKeys.SendWait("~");
-            SendKeys.SendWait("    Обалдеть!");
-            */
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажание TestButtonLazyButton.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{TAB}");
+            }
         }
+
+
+        /// Заметки ///
+        /// Заметки ///
+        /// Заметки ///
+        /// Заметки ///
+
+        // Запуск Paint.
+        // Process.Start("mspaint"); 
+
+        // Сворачивание окна приложения.
+        // WindowState = FormWindowState.Minimized;
+
+        // Блокировка компа = смена пользователя = Win + L.
+        // LockWorkStation(); 
+
+        // Свернуть все окна.
+        // Shell32.Shell shell = new Shell32.Shell();
+        // shell.MinimizeAll();
+
+        /* 
+        // Щелчок мыши по пуску.
+        mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
+        mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+        mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+        */
+
+        /*
+        // Запуск указанной проги.
+        if (LaunchingTheProgramFileWayTextBox.Text == "")
+        {
+
+        }
+        else
+        {
+            Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
+            //note.WaitForInputIdle(); //блок на др действия, пока заданное приложение не запустится 
+        }
+        */
+
+        /*
+        // Ввод в блокнот текста.
+        IntPtr notepadHandle = FindWindow(null, "Блокнот");
+
+        SetForegroundWindow(notepadHandle);
+        SendKeys.SendWait("C# ");
+        SendKeys.SendWait(" Народные советы");
+        SendKeys.SendWait("~");
+        SendKeys.SendWait("    Обалдеть!");
+        */
+
+        /*
+        //
+        // В поведение формы нужно прописать в KeyPress: KeybordToMouse_KeyPress.
+        // Функция мышки. при нажатии пробела курсор переходит на "пуск" и тыкает по нему.
+        private void KeybordToMouse_KeyPress(object sender, KeyPressEventArgs e)
+        {            
+            if (e.KeyChar == ' ')
+            {
+                mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+        }
+        */
+
+        /*
+        //
+        // В поведение MouseFunctionComboBox нужно прописать в SelectedIndexChanged: MouseFunctionComboBox_SelectedIndexChanged.
+        // Функция мышки.
+        private void MouseFunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Цикл запуска Щелчка мыши на нажание Num Multiply.
+            if (MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
+            {
+                // KeybordToMouse_event();
+                //e.KeyCode == Keys.Enter;
+            }
+            
+            //const int MouseEventF_Move = 0x0001;
+            //const int MouseEventF_LeftDown = 0x0002;
+            //const int MouseEventF_LeftUp = 0x0004;
+            //const int MouseEventF_RightDown = 0x0008;
+            //const int MouseEventF_RightUp = 0x0010;
+            //const int MouseEventF_Absolute = 0x8000;
+             
+            //MessageBox.Show("Selected Item Text: " + MouseFunctionComboBox.SelectedItem.ToString() + "\n" +
+            //        "Index: " + MouseFunctionComboBox.SelectedIndex.ToString());            
+        }
+        */
     }
 }
