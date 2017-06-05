@@ -161,7 +161,7 @@ namespace LazyButton
 
         // 
         //
-        //Кнопка "Подтвердить выбор назначаемой кнопки: NumPlus".
+        // Кнопка "Подтвердить выбор назначаемой кнопки: NumPlus".
         private void NumPlusButtonOK_Click(object sender, EventArgs e)
         {
             NumPlusButtonCancel.Enabled = true;
@@ -418,7 +418,7 @@ namespace LazyButton
             KeysConverter converter = new KeysConverter();
             string text = converter.ConvertToString(e.KeyCode);
             // 1) Реализация назначения Запуска программы по нажатию клавиши.
-            // Цикл запуска программы на нажание Num Multiply.
+            // Цикл запуска программы на нажатие Num Multiply.
             if (e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
@@ -562,7 +562,7 @@ namespace LazyButton
             }
 
             // 3) Реализация назначения Сочетания клавиш Windows.
-            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажание Num Multiply.
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажатие Num Multiply.
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 LockWorkStation();
@@ -582,7 +582,7 @@ namespace LazyButton
             {
                 LockWorkStation();
             }
-            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажание Num Multiply.
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажатие Num Multiply.
             Shell32.Shell shell = new Shell32.Shell();
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
@@ -603,7 +603,7 @@ namespace LazyButton
             {
                 shell.MinimizeAll();
             }
-            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажание Num Multiply.
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажатие Num Multiply.
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 SendKeys.Send("%{TAB}");                
@@ -672,7 +672,7 @@ namespace LazyButton
         private void TestButtonLazyButton_Click(object sender, EventArgs e)
         {
             // 1) Реализация назначения Запуска программы по нажатию Кнопки.
-            // Цикл запуска программы на нажание TestButtonLazyButton.
+            // Цикл запуска программы на нажатие TestButtonLazyButton.
             if (LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
@@ -684,15 +684,15 @@ namespace LazyButton
                     Process note = Process.Start(LaunchingTheProgramFileWayTextBox.Text);
                 }
             }
-            
+
             // 2) Реализация назначения Функции мыши.
-            // Цикл запуска Щелчка мыши на нажание TestButtonLazyButton.
+            // Цикл запуска Щелчка мыши на нажатие TestButtonLazyButton.
             if (MouseFunctionComboBox.SelectedItem == "Щелчок" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
                 mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
-            // Цикл запуска Двойного щелчка мыши на нажание TestButtonLazyButton.
+            // Цикл запуска Двойного щелчка мыши на нажатие TestButtonLazyButton.
             if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
                 mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
@@ -700,7 +700,7 @@ namespace LazyButton
                 mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
-            // Цикл запуска Меню мыши на нажание TestButtonLazyButton.
+            // Цикл запуска Меню мыши на нажатие TestButtonLazyButton.
             if (MouseFunctionComboBox.SelectedItem == "Меню" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
                 mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
@@ -710,19 +710,18 @@ namespace LazyButton
             }
 
             // 3) Реализация назначения Сочетания клавиш Windows.
-            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажание TestButtonLazyButton.
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажатие TestButtonLazyButton.
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 LockWorkStation();
             }
-            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажание TestButtonLazyButton.
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажатие TestButtonLazyButton.
             Shell32.Shell shell = new Shell32.Shell();
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 shell.MinimizeAll();
             }
-
-            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажание TestButtonLazyButton.
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажатие TestButtonLazyButton.
             if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && LazyButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 SendKeys.Send("%{TAB}");
