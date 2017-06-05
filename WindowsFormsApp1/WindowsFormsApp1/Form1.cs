@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Collections;
 using System.Diagnostics;
+using Shell32;
 
 //1) Нужно посмотреть момент с блокировкой переходов по TabPage при нажании кнопки "подтвердить" и разблокировкой этого же, при "отменить"
 //2) Посмотреть момент со считыванием клавиш при вводе в "назначить свою". чтобы не дублировался shiftKey\altkey\controlkey (с If поиграть)
@@ -405,19 +406,20 @@ namespace LazyButton
             WINDOWSKeyCombinationComboBox.SelectedIndex = 0;
             GroupButtonsOut.Enabled = false;
         }
-
-
         //
         //
-        // Реализация назначения Запуска программы по нажатию клавиши.
+        // Серия циклов по:
+        // 1) Реализация назначения Запуска программы по нажатию клавиши.
+        // 2) Реализация назначения Функции мыши.
+        // 3) Реализация назначения Сочетания клавиш Windows.
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Keys key = e.KeyData;            
             KeysConverter converter = new KeysConverter();
             string text = converter.ConvertToString(e.KeyCode);
-
+            // 1) Реализация назначения Запуска программы по нажатию клавиши.
             // Цикл запуска программы на нажание Num Multiply.
-            if (e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            if (e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
                 {
@@ -429,7 +431,7 @@ namespace LazyButton
                 }
             }
             // Цикл запуска программы на нажатие Num Plus.
-            if (e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            if (e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
                 {
@@ -441,7 +443,7 @@ namespace LazyButton
                 }
             }
             // Цикл запуска программы на нажатие Num Minus.
-            if (e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            if (e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
                 {
@@ -453,7 +455,7 @@ namespace LazyButton
                 }
             }
             // Цикл запуска программы на назначенную пользователем клавишу.
-            if (((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true) //e.KeyCode == SendKeys.Equals()
+            if (((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
             {
                 if (LaunchingTheProgramFileWayTextBox.Text == "")
                 {
@@ -465,20 +467,198 @@ namespace LazyButton
                 }                
             }
 
-
-            /* 
-            // когда форма у нас в фокусе - при нажатии Keys.Return -- Num Enter выполняется действие в цикле
-            if (e.KeyChar == Convert.ToChar(Keys.Return))
+            // Все эти "варнинги" вылезли из-за торго, что не написано у меня .ToString() после каждого Item'a. но если написать - исключение не проработано. НУЖНО ПРОРАБОТАТЬ!
+            // 2) Реализация назначения Функции мыши.
+            // Цикл запуска Щелчка мыши на нажание Num Multiply.
+            if (MouseFunctionComboBox.SelectedItem == "Щелчок" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
             {
-                mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
                 mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
             }
+            // Цикл запуска Щелчка мыши на нажание Num Plus.
+            if (MouseFunctionComboBox.SelectedItem == "Щелчок" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Щелчка мыши на нажание Num Minus.
+            if (MouseFunctionComboBox.SelectedItem == "Щелчок" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Щелчка мыши на назначенную пользователем клавишу.
+            if (MouseFunctionComboBox.SelectedItem == "Щелчок" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+
+            }
+            // Цикл запуска Двойного щелчка мыши на нажание Num Multiply.
+            if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Двойного щелчка мыши на нажание Num Plus.
+            if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Двойного щелчка мыши на нажание Num Minus.
+            if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Двойного щелчка мыши на назначенную пользователем клавишу.
+            if (MouseFunctionComboBox.SelectedItem == "Двойной щелчок" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_LeftUp, 0, 0, 0, UIntPtr.Zero);
+
+            }
+            // Цикл запуска Меню мыши на нажание Num Multiply.
+            if (MouseFunctionComboBox.SelectedItem == "Меню" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Меню мыши на нажание Num Plus.
+            if (MouseFunctionComboBox.SelectedItem == "Меню" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Меню мыши на нажание Num Minus.
+            if (MouseFunctionComboBox.SelectedItem == "Меню" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+            }
+            // Цикл запуска Меню мыши на назначенную пользователем клавишу.
+            if (MouseFunctionComboBox.SelectedItem == "Меню" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false)
+            {
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightDown, 0, 0, 0, UIntPtr.Zero);
+                mouse_event(MouseEventF_RightUp, 0, 0, 0, UIntPtr.Zero);
+
+            }
+
+            // 3) Реализация назначения Сочетания клавиш Windows.
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажание Num Multiply.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                LockWorkStation();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажатие Num Plus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                LockWorkStation();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на нажатие Num Minus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                LockWorkStation();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "LockWorkStation" на назначенную пользователем клавишу.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "LockWorkStation" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                LockWorkStation();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажание Num Multiply.
+            Shell32.Shell shell = new Shell32.Shell();
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                shell.MinimizeAll();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажатие Num Plus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                shell.MinimizeAll();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на нажатие Num Minus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                shell.MinimizeAll();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Свернуть все окна" на назначенную пользователем клавишу.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Свернуть все окна" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                shell.MinimizeAll();
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажание Num Multiply.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{TAB}");                
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажатие Num Plus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{TAB}");
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на нажатие Num Minus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{TAB}");
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Alt + TAB" на назначенную пользователем клавишу.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Alt + TAB" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{TAB}");
+            }            
+            /*
+            // Доделать это. после разбора с глобальной работой приложения. ибо закрывать свое же приложение так, когда есть "крестик" - бесмыссленно.
+            // Из коллекции комбоБокса "Закрыть приложение ( Alt +F4)" - удален до обновлений.
+            // Аналогично для "Вырезать", "Копировать", "Вставить", "Альт + Принскрин".
+            // Цикл запуска Сочетания клавиш Windows: "Закрыть приложение ( Alt +F4)" на нажание Num Multiply.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Закрыть приложение (Alt +F4)" && e.KeyCode == Keys.Multiply && NumMultiplyButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{F4}");
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Закрыть приложение ( Alt +F4)" на нажатие Num Plus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Закрыть приложение (Alt +F4)" && e.KeyCode == Keys.Add && NumPlusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{F4}");
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Закрыть приложение ( Alt +F4)" на нажатие Num Minus.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Закрыть приложение (Alt +F4)" && e.KeyCode == Keys.Subtract && NumMinusButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{F4}");
+            }
+            // Цикл запуска Сочетания клавиш Windows: "Закрыть приложение ( Alt +F4)" на назначенную пользователем клавишу.
+            if (WINDOWSKeyCombinationComboBox.SelectedItem == "Закрыть приложение (Alt +F4)" && ((object)text).Equals((object)UserButtonTextBox.Text) && UserButtonButtonCancel.Enabled == true && GroupButtonsOut.Enabled == false) //e.KeyCode == SendKeys.Equals()
+            {
+                SendKeys.Send("%{F4}");
+            }
+            //альт+принскрин. без % - просто принскрин
+            //SendKeys.Send("%{PRTSC}");       
             */
         }
+
+
+
+
+
         //
         //
-        // Функция мышки
+        // Функция мышки. при нажатии пробела курсор переходит на "пуск" и тыкает по нему
         private void KeybordToMouse_KeyPress(object sender, KeyPressEventArgs e)
         {            
             if (e.KeyChar == ' ')
@@ -495,7 +675,8 @@ namespace LazyButton
         // Функция мышки
         private void MouseFunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
+            // Цикл запуска Щелчка мыши на нажание Num Multiply.
+            if (MouseFunctionComboBox.SelectedItem.ToString() == "Щелчок")
             {
                 // KeybordToMouse_event();
                 //e.KeyCode == Keys.Enter;
@@ -542,7 +723,11 @@ namespace LazyButton
         {
             //Process.Start("mspaint"); // запуск Paint
             //WindowState = FormWindowState.Minimized; //сворачивание окна приложения
-            LockWorkStation(); // блокировка компа = смена пользователя = Win + L
+            //LockWorkStation(); // блокировка компа = смена пользователя = Win + L
+
+            // свернуть все окна
+            //Shell32.Shell shell = new Shell32.Shell();
+            //shell.MinimizeAll();
             
             /* щелчок мыши по пуску
             mouse_event(MouseEventF_Move | MouseEventF_Absolute, 400, 65000, 0, UIntPtr.Zero);

@@ -22,3 +22,5 @@ D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКноп
 D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1 - копия\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
 D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1 - копия\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1 - копия\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1 - копия\WindowsFormsApp1\obj\Debug\Interop.Shell32.dll
+D:\!!! Уник\Инфа\курсовики\3курсач_ЛениваяКнопка\WindowsFormsApp1 - копия\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache

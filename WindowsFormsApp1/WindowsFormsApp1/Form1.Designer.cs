@@ -479,7 +479,7 @@
             this.ListGroupButtonsOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListGroupButtonsOut.Location = new System.Drawing.Point(3, 25);
             this.ListGroupButtonsOut.Name = "ListGroupButtonsOut";
-            this.ListGroupButtonsOut.SelectedIndex = 4;
+            this.ListGroupButtonsOut.SelectedIndex = 3;
             this.ListGroupButtonsOut.Size = new System.Drawing.Size(874, 303);
             this.ListGroupButtonsOut.Style = MetroFramework.MetroColorStyle.Green;
             this.ListGroupButtonsOut.TabIndex = 0;
@@ -735,13 +735,9 @@
             this.WINDOWSKeyCombinationComboBox.ItemHeight = 23;
             this.WINDOWSKeyCombinationComboBox.Items.AddRange(new object[] {
             "---",
-            "Запустить диспетчера задач",
+            "LockWorkStation",
             "Свернуть все окна",
-            "Alt + TAB",
-            "Закрыть приложение",
-            "Вырезать",
-            "Копировать",
-            "Вставить"});
+            "Alt + TAB"});
             this.WINDOWSKeyCombinationComboBox.Location = new System.Drawing.Point(304, 67);
             this.WINDOWSKeyCombinationComboBox.Name = "WINDOWSKeyCombinationComboBox";
             this.WINDOWSKeyCombinationComboBox.Size = new System.Drawing.Size(275, 29);
